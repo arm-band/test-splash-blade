@@ -1,0 +1,73 @@
+<%- include('partial/_util') -%>
+<%
+    parameters = {
+        title: 'Home',
+        description: 'Unsplash の画像URLから Unsplash API 用のURL文字列を生成するユーティリティです。',
+        ogp: {
+            card: 'photo',
+            account: 'Bredtn_1et',
+            type: 'website',
+            image: 'https://source.unsplash.com/Y4_EtOks_Nc/1920x1080'
+        },
+        errFlag: false
+    }
+-%>
+<%- include('partial/_head', { parameters }) -%>
+<body>
+<%- include('partial/_header') -%>
+<main class="l-main">
+    <section class="container py-5">
+        <h1><i class="fa-solid fa-fw fa-umbrella me-2" aria-hidden="true"></i><%= parameters.title %></h1>
+        <p class="mb-4"><%= parameters.description %></p>
+        <form>
+            <h2 class="mt-4 mb-3">入力</h2>
+            <div class="row mb-3">
+                <label for="photo-url" class="form-label col-12 col-lg-2">画像URL</label>
+                <div class="col-12 col-lg-10">
+                    <input type="text" id="photo-url" name="photo-url" class="form-control" placeholder="https://unsplash.com/photos/XXXXXXXXXXX" aria-label="Unsplash の画像のURL">
+                </div>
+            </div>
+            <div class="input-group row mb-3">
+                <div class="col-12 col-lg-5 row offset-lg-2">
+                    <label for="width" class="form-label col-12 col-lg-3">幅</label>
+                    <div class="col-12 col-lg-9">
+                        <div class="input-group">
+                            <input type="number" id="width" name="width" class="form-control" placeholder="1920" aria-label="幅(px単位)" aria-describedby="width-addon">
+                            <span class="input-group-text" id="width-addon">px</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5 row mb-3">
+                    <label for="height" class="form-label col-12 col-lg-3">高さ</label>
+                    <div class="col-12 col-lg-9">
+                        <div class="input-group">
+                            <input type="number" id="height" name="height" class="form-control" placeholder="1080" aria-label="高さ(px単位)" aria-describedby="height-addon">
+                            <span class="input-group-text" id="height-addon">px</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12 col-lg-10 offset-lg-2">
+                    <button type="button" class="btn btn-primary mb-3" id="generate"><i class="fa-solid fa-fw fa-arrow-rotate-right me-2" aria-hidden="true"></i>生成する</button>
+                </div>
+            </div>
+        </form>
+        <form>
+            <h2 class="mt-4 mb-3">出力</h2>
+            <div class="row">
+                <label for="api-url" class="form-label col-12 col-lg-2">API URL</label>
+                <div class="col-12 col-lg-10">
+                    <div class="input-group">
+                        <input type="text" id="api-url" name="api-url" class="form-control" placeholder="https://source.unsplash.com/XXXXXXXXXXX" aria-label="Unsplash API のURL" aria-describedby="api-url-addon">
+                        <button type="button" class="input-group-text" id="api-url-addon"><i class="fa-solid fa-fw fa-clipboard me-2" aria-hidden="true"></i>Copy</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+<%- include('partial/_footer') -%>
+<%- include('partial/_js_loader') -%>
+</body>
+</html>
